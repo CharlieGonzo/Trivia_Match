@@ -1,6 +1,8 @@
-package org.example.demo.Client;
+package org.example.demo.Model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private Long id;
     private String username;
@@ -11,6 +13,8 @@ public class User {
         this.username = username;
         this.num_of_wins = num_of_wins;
     }
+
+    public User(){}
 
     public Long getId() {
         return id;

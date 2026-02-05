@@ -1,6 +1,8 @@
-package org.example.demo.Client;
+package org.example.demo.Model;
 
-public class Form {
+import java.io.Serializable;
+
+public class Form implements Serializable {
 
     private String username;
     private String password;
@@ -9,6 +11,8 @@ public class Form {
         this.username = username;
         this.password = password;
     }
+
+    public Form(){}
 
     public String getUsername() {
         return username;
