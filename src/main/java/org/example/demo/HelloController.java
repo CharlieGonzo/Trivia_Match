@@ -2,32 +2,49 @@ package org.example.demo;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import org.example.demo.Client.ClientNetworkHandler;
+import org.example.demo.Client.Form;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HelloController {
+public class HelloController implements Initializable {
 
     @FXML
-    private Button continue_Button;
+    private Button loginButton;
+
+    @FXML
+    private TextField passwordBox;
+
+    @FXML
+    private Button registerButton;
 
     @FXML
     private TextField usernameBox;
 
-    @FXML
-    void checkUsername(ActionEvent event) throws IOException {
-        System.out.println("checkUsername");
-        FXMLLoader loader = new FXMLLoader(
-                HelloApplication.class.getResource("second-screen.fxml")
-        );
-        Scene scene = new Scene(loader.load(),continue_Button.getScene().getWidth(),continue_Button.getScene().getHeight());
+    ClientNetworkHandler client;
 
-        Stage stage = (Stage) continue_Button.getScene().getWindow();
-        stage.setScene(scene);
+
+    @FXML
+    void login(ActionEvent event) throws IOException {
+       String username =  usernameBox.getText();
+       String password = passwordBox.getText();
+       Form form = new Form(username,password);
+       client.login(form);
     }
 
+    @FXML
+    void register(ActionEvent event) {
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        client = ClientNetworkHandler.getClientNetworkHandler();
+
+    }
 }
