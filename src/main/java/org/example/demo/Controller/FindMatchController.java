@@ -22,13 +22,13 @@ public class FindMatchController implements Initializable {
     @FXML
     private Button queueButton;
 
-    ClientNetworkHandler client;
+    ClientNetworkHandler client = ClientNetworkHandler.getClientNetworkHandler();
 
     ApplicationManager appManager;
 
     @FXML
     void queue(ActionEvent event) {
-
+        client.joinQueue();
     }
 
     @Override

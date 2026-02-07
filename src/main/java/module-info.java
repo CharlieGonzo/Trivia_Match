@@ -4,6 +4,8 @@ module org.example.demo {
     requires okhttp;
     requires okhttp3;
     requires com.fasterxml.jackson.databind;
+    requires spring.websocket;
+    requires spring.messaging;
 // This is the magic line:
     opens org.example.demo.Client to com.fasterxml.jackson.databind, javafx.fxml;
     opens org.example.demo to javafx.fxml;
